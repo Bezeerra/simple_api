@@ -2,8 +2,20 @@ from dataclasses import dataclass
 
 from fastapi import FastAPI
 from starlette.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
+
+
+# Permitir todas as origens
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permite todas as origens
+    allow_credentials=True,
+    allow_methods=["*"],  # Permite todos os métodos
+    allow_headers=["*"],  # Permite todos os cabeçalhos
+)
 
 
 @dataclass
